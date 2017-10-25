@@ -1,6 +1,13 @@
 <?php
 require_once 'phphtml/PHPHtml.php';
 
+// Container
+$container = new PHPHtmlElement();
+
+// Text
+$text = new PHPHtmlText('Hello');
+$text->setBold();
+
 // Form
 $form = new PHPHtmlForm('get');
 
@@ -9,23 +16,23 @@ $field = new PHPHtmlElement('fieldset');
 $legend = new PHPHtmlElement('legend');
 
 // Name
-$label_name = new PHPHtmlLabel('name');
+$label_name = new PHPHtmlLabel('First Name', 'name');
 $input_name = new PHPHtmlInput('name');
 $input_name->setRequired(true);
-$label_name->append('First Name', $input_name);
+$label_name->append($input_name);
 
 // Last Name
-$label_last = new PHPHtmlLabel('lastName');
+$label_last = new PHPHtmlLabel('Last Name', 'lastName');
 $input_last = new PHPHtmlInput('lastName');
-$label_last->append('Last Name', $input_last);
+$label_last->append($input_last);
 
 // E-mail
-$label_email = new PHPHtmlLabel('email');
+$label_email = new PHPHtmlLabel('E-mail', 'email');
 $input_email = new PHPHtmlInputEmail('email');
-$label_email->append('E-mail', $input_email);
+$label_email->append($input_email);
 
 // Gender
-$label_gender = new PHPHtmlLabel('gender');
+$label_gender = new PHPHtmlLabel('Gender', 'gender');
 $input_gender = new PHPHtmlSelect(array('m' => 'Male', 'f' => 'Female'), 'gender');
 $input_gender->addEmptyOption('[Select]');
 $input_gender->setSelected('m');
@@ -45,4 +52,6 @@ $field->append(
 
 $form->append($field);
 
-echo $form;
+$container->append($text, $form);
+
+echo $container;
