@@ -9,7 +9,6 @@ class PHPHtmlLabel extends PHPHtmlText
         ));
 
         parent::__construct($text, $attrs_or_for);
-        
         $this->setTagName('label');
     }
 }
