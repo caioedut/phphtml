@@ -29,9 +29,9 @@ class PHPHtmlElement
     private $selfClose;
 
     /**
-     * @var string
+     * @var array
      */
-    private $insideOf;
+    private $parents;
 
     /**
      * @param string $tagName
@@ -52,14 +52,18 @@ class PHPHtmlElement
         $html = "";
         $attrs = "";
 
-        if ($this->insideOf) {
-            $html .= "<{$this->insideOf}>";
+        if ($this->parents) {
+            foreach ($this->parents as $parent) {
+                $html .= "<{$parent}>";
+            }
         }
 
         $html .= "<%s %s>%s%s</%s>";
 
-        if ($this->insideOf) {
-            $html .= "</{$this->insideOf}>";
+        if ($this->parents) {
+            foreach ($this->parents as $parent) {
+                $html .= "</{$parent}>";
+            }
         }
 
 
@@ -156,6 +160,16 @@ class PHPHtmlElement
     }
 
     /**
+     * @param string $tagName
+     * @return $this
+     */
+    public function addParent($tagName = 'div')
+    {
+        $this->parents[] = $tagName;
+        return $this;
+    }
+
+    /**
      * @param string|PHPHtmlElement
      * @return $this
      */
@@ -172,16 +186,6 @@ class PHPHtmlElement
     public function append()
     {
         $this->body = array_merge($this->body, func_get_args());
-        return $this;
-    }
-
-    /**
-     * @param string $tagName
-     * @return $this
-     */
-    public function asChildOf($tagName = PHPHtml::MAIN_TAG)
-    {
-        $this->insideOf = $tagName;
         return $this;
     }
 

@@ -8,21 +8,39 @@ class PHPHtmlText extends PHPHtmlElement
         $this->append($text);
     }
 
+    /**
+     * @return $this
+     */
     public function setBold()
     {
-        $this->setTagName('b');
+        $this->addParent('b');
         return $this;
     }
 
+    /**
+     * @return $this
+     */
     public function setItalic()
     {
-        $this->setTagName('em');
+        $this->addParent('em');
         return $this;
     }
 
+    /**
+     * @return $this
+     */
     public function setUnderline()
     {
-        $this->setTagName('u');
+        $this->addParent('u');
+        return $this;
+    }
+
+    /**
+     * @return $this
+     */
+    public function setStrike()
+    {
+        $this->addParent('s');
         return $this;
     }
 
