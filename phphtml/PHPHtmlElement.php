@@ -61,7 +61,7 @@ class PHPHtmlElement
         $html .= "<%s %s>%s%s</%s>";
 
         if ($this->parents) {
-            foreach ($this->parents as $parent) {
+            foreach (array_reverse($this->parents) as $parent) {
                 $html .= "</{$parent}>";
             }
         }
