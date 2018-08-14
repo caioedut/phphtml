@@ -13,7 +13,7 @@ class PHPHtmlText extends PHPHtmlElement
      */
     public function setBold()
     {
-        $this->addParent('b');
+        $this->setStyle('font-weight', 'bold');
         return $this;
     }
 
@@ -22,7 +22,7 @@ class PHPHtmlText extends PHPHtmlElement
      */
     public function setItalic()
     {
-        $this->addParent('em');
+        $this->setStyle('font-style', 'italic');
         return $this;
     }
 
@@ -31,7 +31,7 @@ class PHPHtmlText extends PHPHtmlElement
      */
     public function setUnderline()
     {
-        $this->addParent('u');
+        $this->setStyle('text-decoration', 'underline', true);
         return $this;
     }
 
@@ -40,7 +40,7 @@ class PHPHtmlText extends PHPHtmlElement
      */
     public function setStrike()
     {
-        $this->addParent('s');
+        $this->setStyle('text-decoration', 'line-through', true);
         return $this;
     }
 
