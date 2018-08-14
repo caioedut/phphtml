@@ -31,21 +31,21 @@ $input_name = new PHPHtmlInput('name');
 $input_name->setRequired(true);
 $label_name
     ->append($input_name)
-    ->addParent();
+    ->setBlock();
 
 // Last Name
 $label_last = new PHPHtmlLabel('Last Name', 'lastName');
 $input_last = new PHPHtmlInput('lastName');
 $label_last
     ->append($input_last)
-    ->addParent();
+    ->setBlock();
 
 // E-mail
 $label_email = new PHPHtmlLabel('E-mail', 'email');
 $input_email = new PHPHtmlInputEmail('email');
 $label_email
     ->append($input_email)
-    ->addParent();
+    ->setBlock();
 
 // Gender
 $label_gender = new PHPHtmlLabel('Gender', 'gender');
@@ -55,11 +55,10 @@ $input_gender
     ->setSelected('m');
 $label_gender
     ->append($input_gender)
-    ->addParent();
+    ->setBlock();
 
 // Button Submit
 $submit = new PHPHtmlButton('Submit', 'submit');
-$submit->addParent();
 
 $field->append(
     $legend,

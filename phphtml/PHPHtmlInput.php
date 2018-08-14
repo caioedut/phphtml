@@ -2,6 +2,7 @@
 
 class PHPHtmlInput extends PHPHtmlElement
 {
+
     public function __construct($attrs_or_name = null)
     {
         $this->_prepareAttrs($attrs_or_name, array(
